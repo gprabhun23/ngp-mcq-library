@@ -14,42 +14,56 @@ import {
 export class NgpMcqComponent implements OnInit, AfterViewInit {
   constructor(private elem: ElementRef) {}
   @Input() dataSource: any[] = [];
+  @Input() timeDurationPerQuestion = 30;
+
   selectedAnswerId = -1;
+  questionsTimer = 0;
   public slideIndex = 1;
   public displayResultPage = false;
-  @Input() timeDurationPerQuestion = 30;
-  questionsTimer = 0;
+  public totalQuestions = 0;
+  public totalCorrectAnswers = 0;
+
   answerListArray = [];
-  ngOnInit() {
-    this.showQuestionsSlide(0);
-  }
+
+  ngOnInit() {}
 
   onAnswerSelection(questionId) {
     this.showUpdatedItem(questionId);
   }
 
+  startSlideShow() {
+    this.nextQuestionsSlidWithTimerVal(0);
+    setInterval(() => {
+      this.nextQuestionsSlidWithTimer(1);
+    }, this.timeDurationPerQuestion * 1000);
+  }
+
   defaultAnswerSelected() {
     this.dataSource.map(ele => {
-      ele["SelectedAnswerId"] = -1;
+      ele["SelectedAnswerId"] = this.selectedAnswerId;
     });
   }
 
   AnswerListData() {
+    debugger;
     var resultArray: any[] = [];
     resultArray = this.dataSource.map(ele => {
       var correctAns = ele.AnswerId;
       var selectedAns = ele.SelectedAnswerId;
       if (correctAns == selectedAns) {
-        return true;
+        return { result: true };
       } else {
-        return false;
+        return { result: false };
       }
     });
-    var totalQuestions = resultArray.length;
-    var totalCorrectAnswersArr = resultArray.map(item => {
-      return item === true;
+    this.totalQuestions = resultArray.length;
+    var totalCorrectAnswersCount = 0;
+    resultArray.forEach(e => {
+      if (e.result) {
+        totalCorrectAnswersCount++;
+      }
     });
-    var totalCorrectAnswers = totalCorrectAnswersArr.length;
+    this.totalCorrectAnswers = totalCorrectAnswersCount;
   }
 
   showUpdatedItem(questionId) {
@@ -64,9 +78,6 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.defaultAnswerSelected();
-    setInterval(() => {
-      this.nextQuestionsSlidWithTimer(1);
-    }, this.timeDurationPerQuestion * 1000);
   }
 
   showQuestionsSlide(n) {
@@ -96,6 +107,19 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
   }
 
   nextQuestionsSlidWithTimer(n) {
+    let counter = this.timeDurationPerQuestion;
+    const intervals = setInterval(() => {
+      this.questionsTimer = counter;
+      counter--;
+      if (counter < 0) {
+        clearInterval(intervals);
+        this.showQuestionsSlide((this.slideIndex += n));
+      }
+    }, 1000);
+  }
+
+  nextQuestionsSlidWithTimerVal(n) {
+    this.showQuestionsSlide((this.slideIndex += n));
     let counter = this.timeDurationPerQuestion;
     const intervals = setInterval(() => {
       this.questionsTimer = counter;

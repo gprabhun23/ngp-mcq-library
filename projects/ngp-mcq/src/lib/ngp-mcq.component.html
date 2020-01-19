@@ -1,15 +1,23 @@
 <div class="slideshow-container" *ngIf="dataSource.length > 0">
-
+  <div *ngIf='!displayResultPage'>
+    <button class="start" (click)="startSlideShow()">Start</button>
+  </div>
   <div *ngFor='let item of dataSource; index as i' class="mySlides fade">
+    <div class="timerText">{{ questionsTimer }}</div>
     <h1> {{ i+1 }} / {{ dataSource.length }}) {{ item.Question }}</h1>
-    <div class="text" style="color: red;">{{ questionsTimer }}</div>
     <label class="ngp-rd-container" *ngFor="let answerList of item.AnswerList">
       {{ answerList.Answer }}
       <input type="radio" [name]="item.QuestionId"
       [value]="answerList.AnswerId" [(ngModel)]="selectedAnswerId" (change)="onAnswerSelection(item.QuestionId)" />
       <span class="ngp-checkmark"></span>
     </label>
-    <a class="next" (click)="nextQuestionsSlidWithTimer(1)">&#10095;</a>
+    <a class="next" (click)="nextQuestionsSlidWithTimerVal(1)">&#10095;</a>
   </div>
+  <div *ngIf='displayResultPage'>
+    <h1> Aww !! Sorry</h1>
+    <div class="timerText">
+      <p> You have scored {{ totalCorrectAnswers }} / {{ this.totalQuestions }}</p>
+    </div>
 
+  </div>
 </div>
