@@ -1,24 +1,30 @@
-# NgpMcq
+# ngp-mcq
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
+** Version 1.0.0 **
 
-## Code scaffolding
+ngp-mcq is a multiple choice questionnaire generator service that helps you to create multiple choice questions for use in online test or other purposes.
 
-Run `ng generate component component-name --project ngp-mcq` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngp-mcq`.
-> Note: Don't forget to add `--project ngp-mcq` or else it will be added to the default project in your `angular.json` file. 
+All you need to do is construct an array of questionnaire details and pass it as datasource for this library.
 
-## Build
+-> Easy to use
+-> We are allowing option to pass time limit for each questions (in seconds).
+-> Get results with user selected answers.
+-> The test creation system is very intuitive.
+-> This component will create a dynamic MCQ.
+-> Beautiful UI and mobile friendly
 
-Run `ng build ngp-mcq` to build the project. The build artifacts will be stored in the `dist/` directory.
+##Installation and Usage
+-> Step 1: Install the plugin
 
-## Publishing
+npm i ngp-mcq
 
-After building your library with `ng build ngp-mcq`, go to the dist folder `cd dist/ngp-mcq` and run `npm publish`.
 
-## Running unit tests
+## Contributors
 
-Run `ng test ngp-mcq` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Ganesh Prabhu N <ganeshprabhu133@gmail.com>
 
-## Further help
+##License and copyright
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+© Ganesh Prabhu N, Software Developer
+
+Licensed under the [MIT License] (LICENSE)
