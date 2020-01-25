@@ -1,49 +1,36 @@
 .mySlides {
   display: none;
-  border: 2px solid black;
-  border-radius: 15px;
   font-family: Verdana, sans-serif;
-  margin:auto;
-  box-sizing: border-box
-}
+  margin:15px;
+  box-sizing: border-box;
+  background-color: rgb(28, 28, 30);
+ }
 
-.slideshow-container {
+.ngp-mcq-qn-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
+  min-height: 450px;
+  background-color: rgb(28, 28, 30);
   color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+  border: 2px solid black;
+  border-radius: 15px;
 }
 
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
 
 .timerText {
-  width: 100%;
+  width: 5%;
+  height: 22px;
   border: 1px;
-  border-radius: 50%;
+  border-radius: 26%;
   text-align: center;
-  background-color: green;
-  color: white;
+  background: rgb(242,246,248); /* Old browsers */
+background: -moz-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 50%, rgba(181,198,208,1) 51%, rgba(224,239,249,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(242,246,248,1) 0%,rgba(216,225,231,1) 50%,rgba(181,198,208,1) 51%,rgba(224,239,249,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(242,246,248,1) 0%,rgba(216,225,231,1) 50%,rgba(181,198,208,1) 51%,rgba(224,239,249,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  color: #000;
+  border: 2px solid #000;
   margin: auto;
 }
 
@@ -82,6 +69,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: fit-content;
 }
 
 .ngp-rd-container input {
@@ -128,3 +116,39 @@
   border-radius: 50%;
   background: white;
 }
+
+.ngp-start {
+  text-align: center;
+  align-content: center;
+  background: rgb(206,219,233); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(206,219,233,1) 0%, rgba(170,197,222,1) 17%, rgba(97,153,199,1) 50%, rgba(58,132,195,1) 51%, rgba(65,154,214,1) 59%, rgba(75,184,240,1) 71%, rgba(58,139,194,1) 84%, rgba(38,85,139,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(206,219,233,1) 0%,rgba(170,197,222,1) 17%,rgba(97,153,199,1) 50%,rgba(58,132,195,1) 51%,rgba(65,154,214,1) 59%,rgba(75,184,240,1) 71%,rgba(58,139,194,1) 84%,rgba(38,85,139,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(206,219,233,1) 0%,rgba(170,197,222,1) 17%,rgba(97,153,199,1) 50%,rgba(58,132,195,1) 51%,rgba(65,154,214,1) 59%,rgba(75,184,240,1) 71%,rgba(58,139,194,1) 84%,rgba(38,85,139,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', endColorstr='#26558b',GradientType=0 );
+}
+
+.ngp-mcq-mybutton {
+	box-shadow:inset -2px 22px 10px -1px #29bbff;
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	background-color:#2dabf9;
+	border-radius:31px;
+	border:3px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:23px;
+	padding:12px 44px;
+	text-decoration:none;
+  text-shadow:0px 0px 1px #263666;
+  margin: auto;
+}
+.ngp-mcq-mybutton:hover {
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	background-color:#0688fa;
+}
+.ngp-mcq-mybutton:active {
+	position:relative;
+	top:1px;
+}
+

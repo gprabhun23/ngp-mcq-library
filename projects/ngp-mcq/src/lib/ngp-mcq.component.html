@@ -1,6 +1,6 @@
-<div class="slideshow-container" *ngIf="dataSource.length > 0">
+<div class="ngp-mcq-qn-container" *ngIf="dataSource.length > 0">
   <div *ngIf='!displayResultPage'>
-    <button class="start" (click)="startSlideShow()">Start</button>
+    <button class="ngp-mcq-mybutton" (click)="startSlideShow($event)" *ngIf="IsStartButtonVisible">Start</button>
   </div>
   <div *ngFor='let item of dataSource; index as i' class="mySlides fade">
     <div class="timerText">{{ questionsTimer }}</div>
@@ -11,12 +11,12 @@
       [value]="answerList.AnswerId" [(ngModel)]="selectedAnswerId" (change)="onAnswerSelection(item.QuestionId)" />
       <span class="ngp-checkmark"></span>
     </label>
-    <a class="next" (click)="nextQuestionsSlidWithTimerVal(1)">&#10095;</a>
+    <button class="ngp-mcq-mybutton" (click)="nextQuestionsSlidWithTimerVal(1)">Next &#10095;</button>
   </div>
   <div *ngIf='displayResultPage'>
     <h1> Aww !! Sorry</h1>
-    <div class="timerText">
-      <p> You have scored {{ totalCorrectAnswers }} / {{ this.totalQuestions }}</p>
+    <div class="timerText1">
+      <p> You have scored {{ totalCorrectAnswers }} / {{ totalQuestions }}</p>
     </div>
 
   </div>

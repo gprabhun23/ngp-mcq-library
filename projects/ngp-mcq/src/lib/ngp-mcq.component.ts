@@ -22,7 +22,7 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
   public displayResultPage = false;
   public totalQuestions = 0;
   public totalCorrectAnswers = 0;
-
+  IsStartButtonVisible = true;
   answerListArray = [];
 
   ngOnInit() {}
@@ -31,7 +31,8 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
     this.showUpdatedItem(questionId);
   }
 
-  startSlideShow() {
+  startSlideShow(e) {
+    this.IsStartButtonVisible = false;
     this.nextQuestionsSlidWithTimerVal(0);
     setInterval(() => {
       this.nextQuestionsSlidWithTimer(1);
