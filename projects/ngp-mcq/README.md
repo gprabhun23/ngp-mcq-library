@@ -7,13 +7,19 @@ ngp-mcq is a multiple choice questionnaire generator service that helps you to c
 All you need to do is construct an array of questionnaire details and pass it as datasource for this library.
 
 :point_right: * Easy to use
+
 :point_right: * We are allowing option to pass time limit for each questions (in seconds).
+
 :point_right: * Get results with user selected answers.
+
 :point_right: * The test creation system is very intuitive.
+
 :point_right: * This component will create a dynamic MCQ.
+
 :point_right: * Beautiful UI and mobile friendly
 
 ##Installation and Usage
+
 :point_right: **Step 1:** Install the plugin. 
 
 ```
@@ -74,12 +80,17 @@ Construct the datasource for below interface structure (Questionnaire array) and
 ```
 
 :point_right: **Step 5:** Other properties
+------------- 
 
-**timeDurationPerQuestion** :point_right: Allow to specify the seconds for each questions.
-**allowReset** :point_right: Allow reset button on results page.
-**startText** :point_right: Allow to specify starting text.
-**resultantDataSource** :point_right: Get resultant array along with SelectedAnswerId property on QuestionsList.
-**getCurrentQuestionDetails** :point_right: Get currently displaying question details.
+:point_right: **timeDurationPerQuestion** Allow to specify the seconds for each questions.
+
+:point_right: **allowReset** Allow reset button on results page.
+
+:point_right: **startText** Allow to specify starting text.
+
+:point_right: **resultantDataSource** Get resultant array along with SelectedAnswerId property on QuestionsList.
+
+:point_right: **getCurrentQuestionDetails** Get currently displaying question details.
 
 ## Contributors
 
