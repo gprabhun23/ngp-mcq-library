@@ -1,25 +1,27 @@
 <div class="ngp-mcq-qn-container" *ngIf="dataSource.length > 0">
-  <div *ngIf='!displayResultPage' style="text-align: center;">
-    <h1 *ngIf="IsStartButtonVisible"> {{ startText }}</h1>
+  <div *ngIf='!displayResultPage' class="align-center">
+    <h2 *ngIf="IsStartButtonVisible"> {{ startText }}</h2>
     <button class="ngp-mcq-mybutton" (click)="startSlideShow($event)" *ngIf="IsStartButtonVisible">Start</button>
   </div>
   <div *ngFor='let item of dataSource; index as i' class="myQuestionnaire fade">
     <div class="timerText">{{ questionsTimer }}</div>
-    <h1> {{ i+1 }} / {{ dataSource.length }}) {{ item.Questiontext }}</h1>
+    <h2> {{ i+1 }} / {{ dataSource.length }}) {{ item.Questiontext }}</h2>
     <label class="ngp-rd-container" *ngFor="let answerList of item.AnswerList">
       {{ answerList.AnswerText }}
       <input type="radio" [name]="item.QuestionId"
       [value]="answerList.AnswerId" [(ngModel)]="selectedAnswerId" (change)="onAnswerSelection(item.QuestionId)" />
       <span class="ngp-checkmark"></span>
     </label>
-    <button class="ngp-mcq-mybutton" (click)="nextQuestionsSlidWithTimerVal(1)">Next &#10095;</button>
+    <div class="align-center">
+      <button class="ngp-mcq-mybutton" (click)="nextQuestionsSlidWithTimerVal(1)">Next &#10095;</button>
+    </div>
   </div>
-  <div class="ngp-mcq-qn-container" *ngIf='displayResultPage'>
-    <h1 style="text-align: center;"> Your results are here !!</h1>
-    <div class="timerText1">
+  <div class="ngp-mcq-qn-container align-center" *ngIf='displayResultPage'>
+    <h1> Your results are here !!</h1>
+    <div class="resultpage">
       <h3> You have scored {{ totalCorrectAnswers }} out of {{ totalQuestions }}</h3>
       <h1> Percentage : {{ resultPercentage }} % </h1>
-      <button class="ngp-mcq-mybutton" (click)="startSlideShow($event)" *ngIf="allowReset">Re-Start</button>
+      <button class="ngp-mcq-mybutton" (click)="resetQuestions()" *ngIf="allowReset">Re-Start</button>
     </div>
 
   </div>

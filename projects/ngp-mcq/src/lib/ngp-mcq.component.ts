@@ -16,6 +16,7 @@ import {
 export class NgpMcqComponent implements OnInit, AfterViewInit {
   constructor(private elem: ElementRef) {}
   @Input() dataSource: any[] = [];
+  tempdataSource: any[] = [];
   @Input() timeDurationPerQuestion = 30;
   @Input() startText = 'Press Start to Start the Test';
   @Input() allowReset = false;
@@ -30,7 +31,8 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
   public totalCorrectAnswers = 0;
   IsStartButtonVisible = true;
   answerListArray = [];
-  resultPercentage = "0";
+  resultPercentage = '0';
+  count = 0;
   ngOnInit() {}
 
   onAnswerSelection(questionId) {
@@ -40,30 +42,30 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
   startSlideShow(e) {
     this.IsStartButtonVisible = false;
     this.nextQuestionsSlidWithTimerVal(0);
-    setInterval(() => {
+    let mainSlideTimer = setInterval(() => {
       this.nextQuestionsSlidWithTimer(1);
     }, this.timeDurationPerQuestion * 1000);
   }
 
   defaultAnswerSelected() {
     this.dataSource.map(ele => {
-      ele["SelectedAnswerId"] = this.selectedAnswerId;
+      ele['SelectedAnswerId'] = this.selectedAnswerId;
     });
   }
 
   AnswerListData() {
-    var resultArray: any[] = [];
+    let resultArray: any[] = [];
     resultArray = this.dataSource.map(ele => {
-      var correctAns = ele.ValidAnswerId;
-      var selectedAns = ele.SelectedAnswerId;
-      if (correctAns == selectedAns) {
+      const correctAns = ele.ValidAnswerId;
+      const selectedAns = ele.SelectedAnswerId;
+      if (correctAns === selectedAns) {
         return { result: true };
       } else {
         return { result: false };
       }
     });
     this.totalQuestions = resultArray.length;
-    var totalCorrectAnswersCount = 0;
+    let totalCorrectAnswersCount = 0;
     resultArray.forEach(e => {
       if (e.result) {
         totalCorrectAnswersCount++;
@@ -86,27 +88,35 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.tempdataSource = this.dataSource;
     this.defaultAnswerSelected();
   }
 
+  resetQuestions() {
+    this.displayResultPage = false;
+    this.dataSource = this.tempdataSource;
+  }
+
   showQuestionsSlide(n) {
-    const slides = this.elem.nativeElement.querySelectorAll(".myQuestionnaire");
+    const slides = this.elem.nativeElement.querySelectorAll('.myQuestionnaire');
 
     if (slides) {
       if (n > slides.length) {
-        this.displayResultPage = true;
-        this.resultantDataSource.emit(this.dataSource);
-        this.AnswerListData();
+        if (this.count === 0) {
+          this.displayResultPage = true;
+          this.resultantDataSource.emit(this.dataSource);
+          this.AnswerListData();
+          this.selectedAnswerId = -1;
+          this.count++;
+        }
       }
-      if (n < 1) {
-        this.slideIndex = slides.length;
-      }
+
       slides.forEach((ele: HTMLElement) => {
-        ele.style.display = "none";
+        ele.style.display = 'none';
       });
 
-      if (this.slideIndex !== 0) {
-        slides[this.slideIndex - 1].style.display = "block";
+      if (this.slideIndex <= slides.length) {
+        slides[this.slideIndex - 1].style.display = 'block';
       }
     }
     this.selectedAnswerId = -1;
@@ -118,11 +128,11 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
 
   nextQuestionsSlidWithTimer(n) {
     let counter = this.timeDurationPerQuestion;
-    const intervals = setInterval(() => {
+    let slideInterval = setInterval(() => {
       this.questionsTimer = counter;
       counter--;
       if (counter < 0) {
-        clearInterval(intervals);
+        clearInterval(slideInterval);
         this.showQuestionsSlide((this.slideIndex += n));
       }
     }, 1000);
@@ -130,12 +140,13 @@ export class NgpMcqComponent implements OnInit, AfterViewInit {
 
   nextQuestionsSlidWithTimerVal(n) {
     this.showQuestionsSlide((this.slideIndex += n));
+    n++;
     let counter = this.timeDurationPerQuestion;
-    const intervals = setInterval(() => {
+    let tempSlideInterval = setInterval(() => {
       this.questionsTimer = counter;
       counter--;
       if (counter < 0) {
-        clearInterval(intervals);
+        clearInterval(tempSlideInterval);
         this.showQuestionsSlide((this.slideIndex += n));
       }
     }, 1000);

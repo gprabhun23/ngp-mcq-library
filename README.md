@@ -1,6 +1,6 @@
 # ngp-mcq
 
-** Version 1.1.0 **
+** Version 1.1.1 **
 
 ngp-mcq is a multiple choice questionnaire generator service that helps you to create multiple choice questions for use in online test or other purposes.
 
@@ -55,7 +55,7 @@ export class AppModule { }
 
   <ngp-mcq [dataSource]="dataSourceList"
   [timeDurationPerQuestion]="30"
-  [allowReset]="true"
+  [allowReset]="false"
   (resultantDataSource)="getResult($event)"
   (getCurrentQuestionDetails)="getCurrentQuestionDetails($event)">
   </ngp-mcq>

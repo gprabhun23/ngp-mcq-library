@@ -151,4 +151,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', end
 	position:relative;
 	top:1px;
 }
-
+.align-center {
+  text-align: center !important;
+}
