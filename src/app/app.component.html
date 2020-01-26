@@ -1,4 +1,8 @@
 <div>
-  <lib-ngp-mcq [dataSource]="dataSourceList" [timeDurationPerQuestion]="30">
-  </lib-ngp-mcq>
+  <ngp-mcq [dataSource]="dataSourceList"
+  [timeDurationPerQuestion]="30"
+  [allowReset]="true"
+  (resultantDataSource)="getResult($event)"
+  (getCurrentQuestionDetails)="getCurrentQuestionDetails($event)">
+  </ngp-mcq>
 </div>
